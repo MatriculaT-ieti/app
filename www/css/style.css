@@ -1,0 +1,17 @@
+html, body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+.tabs .tab, a {
+    color: darkorange;
+    font-weight: normal;
+}
+
+.tabs .tab:focus.active, a.active a:focus {
+    background-color: rgba(255, 191, 131, 0.2);
+    color: orangered;
+    font-weight: bold;
+}
