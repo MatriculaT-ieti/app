@@ -4,19 +4,19 @@ function login() {
     var email = document.getElementById("email");
     var password = document.getElementById("password");
 
-    validateLogin(email, CryptoJS.SHA256(password.value).toString());
+    validateLogin(email.value, CryptoJS.SHA256(password.value).toString());
 }
 
 function validateUser(email, password) {
-    let query = users;
+    let query = "users";
     $.ajax({
         method: "GET",
         url: "API" + query,
         dataType: "json", // necessitem això pq ens retorni un objecte JSON
     }).done(function(user) {
-        for (let index = 0; index < user.length; index++) {
-            if (user[index].email == email && user[index].password == password) {
-                console.log("email: " + user.email + " -- password: " + user.password);
+        for (let i = 0; i < user.length; i++) {
+            if (user[i].email == email && user[i].password == password) {
+                console.log("email: " + user[i].email + " -- password: " + user[i].password);
                 return true;
             }
         }
