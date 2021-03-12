@@ -5,6 +5,10 @@ html, body {
     overflow: hidden;
 }
 
+.custom-padding {
+    padding: 1em;
+}
+
 .tabs .tab, a {
     color: darkorange;
     font-weight: normal;
