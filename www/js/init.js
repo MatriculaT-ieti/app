@@ -1,7 +1,7 @@
 (function($) {
     $(function() {
 
-        $('sidenav').sidenav();
+        $('.sidenav').sidenav();
         $('.tabs').tabs({ "swipeable": true });
 
     }); //end of document ready

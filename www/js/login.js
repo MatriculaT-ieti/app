@@ -1,10 +1,16 @@
 document.addEventListener('deviceready', onDeviceReady, false);
-var btnLogin = document.getElementById("loginButton"); btnLogin.onclick = login;
-var email = document.getElementById("email");
-var password = document.getElementById("password");
+let btnLogin = document.getElementById("loginButton"); btnLogin.onclick = login;
+let email = document.getElementById("email");
+let password = document.getElementById("password");
 
 function login() {
-    validateLogin(email.value, CryptoJS.SHA256(password.value).toString());    
+    if (email.value == "" || email.value == null) {
+        alert("El campo 'Email' no puede estar vac" + '\u00ED' + "o");
+    } else if (password.value == "" || password.value == null) {
+        alert("El campo 'Password' no puede estar vac" + '\u00ED' + "o");
+    } else {
+        validateLogin(email.value, CryptoJS.SHA256(password.value).toString());    
+    }
 }
 
 function validateLogin(email, password) {
@@ -17,7 +23,8 @@ function validateLogin(email, password) {
         if (user.length > 0) {
             for (let i = 0; i < user.length; i++) {
                 if (user[i].email == email && user[i].password == password) {
-                    alert("Login correct");
+                    let url = window.location;
+                    window.location.replace("index.html");
                 }
             }
         } else {

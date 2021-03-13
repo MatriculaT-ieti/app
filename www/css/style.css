@@ -5,8 +5,12 @@ html, body {
     overflow: hidden;
 }
 
-.custom-padding {
+.custom-padding-1em {
     padding: 1em;
+}
+
+.custom-padding-02em {
+    padding: 0.2em;
 }
 
 .tabs .tab, a {
@@ -18,4 +22,14 @@ html, body {
     background-color: rgba(255, 191, 131, 0.2);
     color: orangered;
     font-weight: bold;
+}
+
+.input-custom-border:focus {
+    color: #444;
+    border-bottom: 1px solid orange !important;
+    box-shadow: 0 1px 0 0 orange !important;
+}
+
+.label-custom-color {
+    color: orange !important;
 }
