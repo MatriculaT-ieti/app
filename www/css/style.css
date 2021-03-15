@@ -13,6 +13,10 @@ html, body {
     padding: 0.2em;
 }
 
+.custom-font-size {
+    font-size: 0.8em !important;
+}
+
 .tabs .tab, a {
     color: darkorange;
     font-weight: normal;

@@ -15,21 +15,24 @@ function login() {
 
 function validateLogin(email, password) {
     let query = "/users?email="+email;
+    let match = false;
     $.ajax({
         method: "GET",
-        url: "http://localhost:3000" + query,
+        url: "https://matriculat-ieti.herokuapp.com" + query,
         dataType: "json",
     }).done(function(user) {
         if (user.length > 0) {
             for (let i = 0; i < user.length; i++) {
                 if (user[i].email == email && user[i].password == password) {
+                    match = true;
                     let url = window.location;
                     window.location.replace("index.html");
+                    break;
                 }
             }
-        } else {
-            alert("Login incorrect");
-
+            if (!match) {
+                alert("La contrase" + '\u00F1' + "a es incorrecta.");
+            }
         }
         
     }).fail(function() {

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>MatriculaT</title>
 
-<!-- cordova-headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://code.jquery.com fonts.gstatic.com data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; media-src *; img-src 'self' data: content:;">  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src https://matriculat-ieti.herokuapp.com https://code.jquery.com https://fonts.gstatic.com http://localhost:3000 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
   <!-- CSS  -->
@@ -30,20 +30,34 @@
     </div>
   </nav>
   <div class="no-pad-bot grey darken-3" id="index-banner">
-    <ul id="tabs-swipe" class="tabs center grey darken-3" align-items="center">
+    <ul id="tabs-swipe" class="tabs tabs-fixed-width center grey darken-3" align-items="center">
       <!-- <i class="tiny material-icons circle red">error</i> -->
       <!-- <i class="tiny material-icons circle green">check_circle</i> -->
-      <li class="tab col s3"><a href="#tab1" class="orange-text">Dashboard</a></li>
-      <li class="tab col s3"><a href="#tab2" class="orange-text">Requeriments</a></li>
-      <li class="tab col s3"><a href="#tab3" class="orange-text">UF's</a></li>
-      <li class="tab col s3"><a href="#tab4" class="orange-text">Dades Personals</a></li>
+      <li class="tab col s3"><a href="#tab1" class="orange-text custom-font-size">Dashboard</a></li>
+      <li class="tab col s3"><a href="#tab2" class="orange-text custom-font-size">Requeriments</a></li>
+      <li class="tab col s3"><a href="#tab3" class="orange-text custom-font-size">UF's</a></li>
+      <li class="tab col s3"><a href="#tab4" class="orange-text custom-font-size">Dades Personals</a></li>
     </ul>
   </div>
 
-  <div id="tab1" class="col s12 custom-padding-1em">Dashboard</div>
+  <div id="tab1" class="col s12 custom-padding-1em">Dashboard <i class="tiny material-icons circle red">error</i></div>
   <div id="tab2" class="col s12 custom-padding-1em">Requeriments</div>
   <div id="tab3" class="col s12 custom-padding-1em">UF's</div>
-  <div id="tab4" class="col s12 custom-padding-1em">Dades Personals <i class="tiny material-icons circle red">error</i></div>
+  <div id="tab4" class="col s12 custom-padding-1em">Dades Personals</div>
+  
+  <div class="fixed-action-btn">
+    <a id="confirm-floating-btn" class="btn-floating btn-large orange">
+      <i class="large material-icons">check</i>
+    </a>
+  </div>
+
+  <div class="tap-target orange custom-padding-1em" data-target="confirm-floating-btn">
+    <div class="tap-target-content">
+      <h5>Matriculaci&#243;n</h5>
+      <p>Cuando haya completado todos los campos y est&#233;n validados correctamente, pulse aqu&#237; para completar la matriculaci&#243;n.</p>
+    </div>
+  </div>
+      
 
   <!--  Scripts-->
   <script src="cordova.js"></script>
