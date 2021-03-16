@@ -21,12 +21,15 @@ function validateLogin(email, password) {
         dataType: "json",
     }).done(function(user) {
         user = jwt_decode(user.token).item;
-
-        if (user.email == email && user.password == password) {
-            let url = window.location;
-            window.location.replace("index.html");
+        if (user.isAdmin) {
+            alert("Token no v" + '\u00E1' + "lido.");
         } else {
-            alert("La contrase" + '\u00F1' + "a es incorrecta.");
+            if (user.email == email && user.password == password) {
+                let url = window.location;
+                window.location.replace("index.html");
+            } else {
+                alert("La contrase" + '\u00F1' + "a es incorrecta.");
+            }
         }
         
     }).fail(function() {
