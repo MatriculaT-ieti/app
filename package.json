@@ -26,5 +26,8 @@
       "browser",
       "android"
     ]
+  },
+  "dependencies": {
+    "jwt-decode": "^3.1.2"
   }
 }
