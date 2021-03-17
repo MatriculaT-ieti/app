@@ -23,49 +23,28 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
-var stateMatriculation = document.getElementById("stateMatriculation");
+var trafficLightMatricualtion = document.getElementById("trafficLightMatriculation");
 var btMatriculation = document.getElementById("btMatriculation");
 btMatriculation.onclick = changeColorMatriculation;
 
 var dniInFront = document.getElementById("dniInFront");
-var btDniInFront = document.getElementById("btDniInFront");
-btDniInFront.onclick = changeColorDniInFront;
+var btMInFront = document.getElementById("btDniInFront");
+btMInFront.onclick = changeColorDniInFront;
 
 var dniBehind = document.getElementById("dniBehind");
 var btDniBehind = document.getElementById("btDniBehind");
 btDniBehind.onclick = changeColorDniBehind;
 
 function changeColorMatriculation() {
-    var random = Math.floor(Math.random() * 3);
-    if (random == 0) {
-        stateMatriculation.style.borderLeft = "20px dotted #008000";
-    } else if (random == 1) {
-        stateMatriculation.style.borderLeft = "20px dotted #FFA500";
-    } else {
-        stateMatriculation.style.borderLeft = "20px dotted #FF0000";
-    }
+    trafficLightMatricualtion.className = "material-icons circle green-text darken-3";
 }
 
 function changeColorDniInFront() {
-    var random = Math.floor(Math.random() * 3);
-    if (random == 0) {
-        dniInFront.style.borderLeft = "20px dotted #008000";
-    } else if (random == 1) {
-        dniInFront.style.borderLeft = "20px dotted #FFA500";
-    } else {
-        dniInFront.style.borderLeft = "20px dotted #FF0000";
-    }
+    dniInFront.className = "material-icons circle orange-text darken-3";
 }
 
 function changeColorDniBehind() {
-    var random = Math.floor(Math.random() * 3);
-    if (random == 0) {
-        dniBehind.style.borderLeft = "20px dotted #008000";
-    } else if (random == 1) {
-        dniBehind.style.borderLeft = "20px dotted #FFA500";
-    } else {
-        dniBehind.style.borderLeft = "20px dotted #FF0000";
-    }
+    dniBehind.className = "material-icons circle red-text darken-3";
 }
 
 function onDeviceReady() {
