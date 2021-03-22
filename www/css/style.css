@@ -39,3 +39,9 @@ a.active a:focus {
 .label-custom-color {
     color: orange !important;
 }
+
+.custom-margin-auto {
+    width: max-content !important;
+    margin-left: auto;
+    margin-right: auto;
+}
