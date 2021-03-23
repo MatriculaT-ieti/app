@@ -1,7 +1,7 @@
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 }
 
@@ -17,12 +17,14 @@ html, body {
     font-size: 0.8em !important;
 }
 
-.tabs .tab, a {
+.tabs .tab,
+a {
     color: darkorange;
     font-weight: normal;
 }
 
-.tabs .tab:focus.active, a.active a:focus {
+.tabs .tab:focus.active,
+a.active a:focus {
     background-color: rgba(255, 191, 131, 0.2);
     color: orangered;
     font-weight: bold;
@@ -36,4 +38,10 @@ html, body {
 
 .label-custom-color {
     color: orange !important;
+}
+
+.custom-margin-auto {
+    width: max-content !important;
+    margin-left: auto;
+    margin-right: auto;
 }

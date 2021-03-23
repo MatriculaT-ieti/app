@@ -14,23 +14,26 @@ function login() {
 }
 
 function validateLogin(email, password) {
-    let query = "/users?email="+email;
+    let query = "/api/login/students?email=" + email + "&password=" + password;
     $.ajax({
         method: "GET",
         url: "https://matriculat-ieti.herokuapp.com" + query,
         dataType: "json",
     }).done(function(user) {
-        user = jwt_decode(user.token).item;
-
-        if (user.email == email && user.password == password) {
-            let url = window.location;
-            window.location.replace("index.html");
+        if (user.token == null) {
+            alert("Los campos email o contrase" + '\u00F1' + "a no s" + '\u00F3' + "n correctos.");
         } else {
-            alert("La contrase" + '\u00F1' + "a es incorrecta.");
+            user = jwt_decode(user.token).item;
+            if (user.email == email && user.password == password) {
+                let url = window.location;
+                window.location.replace("index.html");
+            } else {
+                alert("La contrase" + '\u00F1' + "a es incorrecta.");
+            }
         }
         
     }).fail(function() {
-        alert("No se ha entrado ningun usuario con ese email.");
+        alert("No se ha podido conectar con la base de datos.");
     });
 }
 
