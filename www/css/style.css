@@ -5,12 +5,20 @@ body {
     overflow: hidden;
 }
 
+.custom-icon-padding {
+    padding-top: 1%;
+}
+
 .custom-padding-1em {
     padding: 1em;
 }
 
 .custom-padding-02em {
     padding: 0.2em;
+}
+
+.custom-padding-left-02em {
+    padding-left: 0.2em;
 }
 
 .custom-font-size {
@@ -44,4 +52,9 @@ a.active a:focus {
     width: max-content !important;
     margin-left: auto;
     margin-right: auto;
+}
+
+.custom-inline-tag {
+    display: flex;
+    flex-direction: row;
 }
