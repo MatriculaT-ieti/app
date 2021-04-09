@@ -25,7 +25,7 @@ function validateLogin(email, password) {
             alert("Los campos email o contrase" + '\u00F1' + "a no s" + '\u00F3' + "n correctos.");
         } else {
             user = jwt_decode(user.token).item;
-            token = user;
+            localStorage.setItem("data", JSON.stringify(user));
             if (user.email == email && user.password == password) {
                 let url = window.location;
                 window.location.replace("index.html");

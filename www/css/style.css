@@ -15,6 +15,16 @@ body {
     height: 55vh;
 }
 
+.custom-max-width {
+    width: 70vw;
+}
+
+.custom-bottom-left-position {
+    position: fixed;
+    left: 14px;
+    bottom: 127px;
+}
+
 .custom-border-radius {
     border-radius: 15px;
 }

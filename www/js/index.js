@@ -25,25 +25,7 @@ document.addEventListener('')
 
 let selectAll = document.getElementById("selectAllCheckboxes");
 let checkboxList = [];
-let token = {
-    "_id": "604b8f6157ad042d7c156b62",
-    "dni": "12345618X",
-    "first_name": "Jordi",
-    "last_name": "Garcia",
-    "phone_number": 666,
-    "email": "jordigarcia@gmail.com",
-    "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
-    "token": "",
-    "country": "Spain",
-    "city": "Barcelona",
-    "full_address": "1th Avenue 1o 2a",
-    "isAdmin": false,
-    "cicle_formatiu": "Preimpressió digital",
-    "cursando": "{\"hola\":\"hola\"}",
-    "uf_passed": [
-      null
-    ]
-  };
+let token = JSON.parse(localStorage.getItem("data"));
 
 async function onDeviceReady() {
 	await processUFs();
