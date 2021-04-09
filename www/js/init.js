@@ -4,10 +4,6 @@
         $('.sidenav').sidenav();
         $('.tabs').tabs({ "swipeable": true });
 
-        $(document).ready(function() {
-            $('.fixed-action-btn').floatingActionButton();
-        });
-
         if ($(".carousel").length > 0) {
             $(".carousel")[0].style = "height: 100%;";
         }
@@ -15,6 +11,8 @@
         $(document).ready(function() {
             $('.tap-target').tapTarget();
             $('.tap-target').tapTarget('open');
+            $('.fixed-action-btn').floatingActionButton();
+            $('.collapsible').collapsible();
         });
 
 

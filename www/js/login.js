@@ -1,7 +1,8 @@
 document.addEventListener('deviceready', onDeviceReady, false);
-let btnLogin = document.getElementById("loginButton"); btnLogin.onclick = login;
+let btnLogin = document.getElementById("loginButton");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
+var token = {};
 
 function login() {
     if (email.value == "" || email.value == null) {
@@ -24,6 +25,7 @@ function validateLogin(email, password) {
             alert("Los campos email o contrase" + '\u00F1' + "a no s" + '\u00F3' + "n correctos.");
         } else {
             user = jwt_decode(user.token).item;
+            token = user;
             if (user.email == email && user.password == password) {
                 let url = window.location;
                 window.location.replace("index.html");
@@ -38,5 +40,6 @@ function validateLogin(email, password) {
 }
 
 function onDeviceReady() {
+    btnLogin.onclick = login;
     // Pass
 }

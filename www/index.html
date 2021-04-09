@@ -1,104 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>MatriculaT</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<title>MatriculaT</title>
 
-  <meta http-equiv="Content-Security-Policy" content="default-src https://matriculat-ieti.herokuapp.com https://code.jquery.com https://fonts.gstatic.com http://localhost:3000 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src https://matriculat-ieti.herokuapp.com https://code.jquery.com https://fonts.gstatic.com http://localhost:3000 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<!-- CSS  -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
+
 <body>
-  <nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a>Settings (WIP)</a></li>
-        <li><a>Exit (WIP)</a></li>
-      </ul>
+	<div class="navbar-fixed">
+		<nav class="grey darken-4">
+			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a>Opcions (WIP)</a></li>
+				</ul>
+	
+				<ul id="nav-mobile" class="sidenav">
+					<li><a>Opcions (WIP)</a></li>
+					<li><a>Sortir (WIP)</a></li>
+				</ul>
+				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			</div>
+			<div class="no-pad-bot grey darken-3" id="index-banner">
+				<ul id="tabs-swipe" class="tabs tabs-fixed-width center grey darken-3" align-items="center">
+					<!-- <i class="tiny material-icons circle red">error</i> -->
+					<!-- <i class="tiny material-icons circle green">check_circle</i> -->
+					<li class="tab col s3"><a href="#tab1" class="orange-text custom-font-size custom-border-radius">Dashboard</a></li>
+					<li class="tab col s3"><a href="#tab2" class="orange-text custom-font-size custom-border-radius">Requeriments</a></li>
+					<li class="tab col s3"><a href="#tab3" class="orange-text custom-font-size custom-border-radius">UF's</a></li>
+					<li class="tab col s3"><a href="#tab4" class="orange-text custom-font-size custom-border-radius">Dades Personals</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a>Settings (WIP)</a></li>
-        <li><a>Exit (WIP)</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-  <div class="no-pad-bot grey darken-3" id="index-banner">
-    <ul id="tabs-swipe" class="tabs tabs-fixed-width center grey darken-3" align-items="center">
-      <!-- <i class="tiny material-icons circle red">error</i> -->
-      <!-- <i class="tiny material-icons circle green">check_circle</i> -->
-      <li class="tab col s3"><a href="#tab1" class="orange-text custom-font-size">Dashboard</a></li>
-      <li class="tab col s3"><a href="#tab2" class="orange-text custom-font-size">Requeriments</a></li>
-      <li class="tab col s3"><a href="#tab3" class="orange-text custom-font-size">UF's</a></li>
-      <li class="tab col s3"><a href="#tab4" class="orange-text custom-font-size">Dades Personals</a></li>
-    </ul>
-  </div>
+	<!-- CONTENT DASHBOARD-->
+	<div id="tab1" class="col s12 custom-padding-1em custom-margin-top">
+		<div class="col s6 custom-margin-auto">
+			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
+				<i id="trafficLightMatriculation"
+					class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
+				<div class="custom-inline-tag custom-padding-02em">
+					<b>ESTADO MATRICULACION</b>
+				</div>
 
-  <!-- CONTENT DASHBOARD-->
-  <div id="tab1" class="col s12 custom-padding-1em ">
-    <div class="col s6 custom-margin-auto">
-      <div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-        <i id="trafficLightMatriculation" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-        <div class="custom-inline-tag custom-padding-02em">
-          <b>ESTADO MATRICULACION</b>
-        </div>
+				<a id="btMatriculation" class="waves-effect waves-light btn">button</a>
+			</div>
 
-        <a id="btMatriculation" class="waves-effect waves-light btn">button</a>
-      </div>
+			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
+				<i id="dniInFront" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
+				<div class="custom-inline-tag custom-padding-02em">
+					<b>DNI POR DELANTE</b>
+				</div>
 
-      <div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-        <i id="dniInFront" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-        <div class="custom-inline-tag custom-padding-02em">
-          <b>DNI POR DELANTE</b>
-        </div>
+				<a id="btDniInFront" class="waves-effect waves-light btn">button</a>
+			</div>
 
-        <a id="btMatriculation" class="waves-effect waves-light btn">button</a>
-      </div>
+			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
+				<i id="dniBehind" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
+				<div class="custom-inline-tag custom-padding-02em">
+					<b>DNI POR DETRAS</b>
+				</div>
 
-      <div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-        <i id="dniBehind" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-        <div class="custom-inline-tag custom-padding-02em">
-          <b>DNI POR DETRAS</b>
-        </div>
+				<a id="btDniBehind" class="waves-effect waves-light btn">button</a>
+			</div>
+		</div>
+	</div>
 
-        <a id="btMatriculation" class="waves-effect waves-light btn">button</a>
-      </div>
-    </div>  
-  </div>
+	<!-- CONTENT REQUERIMENTS-->
+	<div id="tab2" class="col s12 custom-padding-1em custom-margin-top">Requeriments</div>
 
-  <!-- CONTENT REQUERIMENTS-->
-  <div id="tab2" class="col s12 custom-padding-1em">Requeriments</div>
+	<!-- CONTENT UFS-->
+	<div id="tab3" class="col s12 custom-padding-02em custom-margin-top">
+		<div class="custom-padding-1em flex-column custom-margin-bottom-125px">
+			<p class="custom-padding-1em">
+				<label>
+					<input id="selectAllCheckboxes" type="checkbox" class="filled-in" checked="false"/>
+					<span>Seleccionar tot</span>
+				</label>
+			</p>
+			<ul id="collapsibleContainer" class="collapsible custom-scroll custom-max-height custom-border-radius">
+				
+			</ul>
+			<a id="saveUf" class="waves-effect waves-grey grey darken-3 orange-text btn-large custom-border-radius center-align custom-margin-top-15px">Guardar</a>
+		</div>
+	</div>
 
-  <!-- CONTENT UFS-->
-  <div id="tab3" class="col s12 custom-padding-1em">UF's</div>
+	<!-- CONTENT DADES PERSONALS-->
+	<div id="tab4" class="col s12 custom-padding-1em custom-margin-top">Dades Personals</div>
 
-  <!-- CONTENT DADES PERSONALS-->
-  <div id="tab4" class="col s12 custom-padding-1em">Dades Personals</div>
-  
-  <div class="fixed-action-btn">
-    <a id="confirm-floating-btn" class="btn-floating btn-large orange">
-      <i class="large material-icons">check</i>
-    </a>
-  </div>
+	<!-- Floating Button -->
+	<div class="fixed-action-btn">
+		<a id="confirm-floating-btn" class="btn-floating btn-large orange">
+			<i class="large material-icons">check</i>
+		</a>
+	</div>
 
-  <div class="tap-target orange custom-padding-1em" data-target="confirm-floating-btn">
-    <div class="tap-target-content">
-      <h5>Matriculaci&#243;n</h5>
-      <p>Cuando haya completado todos los campos y est&#233;n validados correctamente, pulse aqu&#237; para completar la matriculaci&#243;n.</p>
-    </div>
-  </div>
-      
+	<div class="tap-target orange custom-padding-1em" data-target="confirm-floating-btn">
+		<div class="tap-target-content">
+			<h5>Matriculaci&#243;n</h5>
+			<p>Cuando haya completado todos los campos y est&#233;n validados correctamente, pulse aqu&#237; para
+				completar la
+				matriculaci&#243;n.</p>
+		</div>
+	</div>
 
-  <!--  Scripts-->
-  <script src="cordova.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  </body>
+	<!--  Scripts-->
+	<script src="cordova.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<!-- <script src="js/login.js"></script> -->
+	<script src="js/init.js"></script>
+	<script src="js/index.js"></script>
+</body>
+
 </html>
