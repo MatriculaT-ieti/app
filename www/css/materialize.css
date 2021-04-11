@@ -8147,6 +8147,11 @@ input[type=range]::-ms-thumb {
     border-color: #4285f4;
 }
 
+.spinner-orange,
+.spinner-orange-only {
+    border-color: #ff9800;
+}
+
 .spinner-red,
 .spinner-red-only {
     border-color: #db4437;
