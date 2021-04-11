@@ -7,7 +7,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         MatriculaT-Ieti
     </author>
-    <icon src="www/img/logo.png" width="57" height="57" 	density="mdpi" />
+    <icon src="www/img/logo.png" width="57" height="57" density="mdpi" />
     <!-- <content src="index.html" /> -->
     <content src="login.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />

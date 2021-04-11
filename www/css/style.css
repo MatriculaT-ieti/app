@@ -131,11 +131,6 @@ a.active a:focus {
     animation: shake 0.5s;
     animation-iteration-count: 1;
 }
-
-.shake-animation-v2 {
-    animation: shake 0.5s;
-    animation-iteration-count: 1;
-}
   
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
