@@ -78,18 +78,63 @@
 	</div>
 
 	<!-- CONTENT REQUERIMENTS-->
-	<div id="tab2" class="col s12 custom-padding-1em custom-margin-top">Requeriments</div>
+	<div id="tab2" class="col s12 custom-padding-1em custom-margin-top">
+		<div class="input-field col s12 center-align custom-padding-1em">
+			<select id="selectRequirementsProfile">
+				<option class="orange-text" value="" disabled selected>Selecciona el perfil de requeriments</option>
+				<!-- <option class="orange-text" value="0">Perfil est&#224;ndard</option>
+				<option class="orange-text" value="1">Monoparental</option>
+				<option class="orange-text" value="2">Familia Nombrosa</option>
+				<option class="orange-text" value="3">Majors de 28 anys</option>
+				<option class="orange-text" value="4">Majors de 28 anys amb Monoparental</option>
+				<option class="orange-text" value="5">Majors de 28 anys amb Familia Nombrosa</option> -->
+			</select>
+			<label>Perfil de requeriments</label>
+		</div>
+
+		<h5 class="custom-padding-left-05em custom-margin-bottom-1em custom-negative-margin-top-10px">Requeriments:</h5>
+		<div class="custom-padding-1em custom-scroll custom-max-height-50 custom-border custom-border-radius custom-padding-top-0">
+			<p>Alumne</p>
+			<!-- DNI Alumne-->
+			<p>
+				<a id="dniAlumneAnvers" name="requerimentMinimButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">DNI alumne (anvers)</a>
+			</p>
+			
+			<p>
+				<a id="dniAlumneRevers" name="requerimentMinimButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">DNI alumne (revers)</a>
+			</p>
+			<!-- Sanitaria -->
+			<p>
+				<a id="sanitariaAlumne" name="requerimentMinimButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">Targeta Sanit&#224;ria</a>
+			</p>
+			<p>Pare, mare o tutor</p>
+			<!-- DNI Representant Legal -->
+			<p>
+				<a id="dniRepresentantAnvers" name="requerimentRepresentantButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">DNI pare o mare (anvers)</a>
+			</p>
+			<p>
+				<a id="dniRepresentantRevers" name="requerimentRepresentantButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">DNI pare o mare (revers)</a>
+			</p>
+			<p>Documents extra</p>
+			<p>
+				<a id="monoparental" name="requerimentMonoparentalButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">Monoparental</a>
+			</p>
+			<p>
+				<a id="familiaNombrosa" name="requerimentFamiliaNombrosaButton" class="waves-effect waves-grey grey darken-3 orange-text btn custom-border-radius">Familia Nombrosa</a>
+			</p>
+		</div>
+	</div>
 
 	<!-- CONTENT UFS-->
 	<div id="tab3" class="col s12 custom-padding-02em custom-margin-top">
 		<div class="custom-padding-1em flex-column custom-margin-bottom-125px">
-			<p class="custom-padding-1em">
+			<p class="custom-padding-1em custom-negative-margin-5px">
 				<label>
 					<input id="selectAllCheckboxes" type="checkbox" class="filled-in" checked="false"/>
 					<span>Seleccionar tot</span>
 				</label>
 			</p>
-			<ul id="collapsibleContainer" class="collapsible custom-scroll custom-max-height custom-border-radius">
+			<ul id="collapsibleContainer" class="collapsible custom-scroll custom-max-height-55 custom-border-radius">
 				
 			</ul>
 			<a id="saveUfs" class="waves-effect waves-grey grey darken-3 orange-text btn-large custom-border-radius center-align custom-margin-top-15px custom-max-width custom-bottom-left-position">Guardar</a>

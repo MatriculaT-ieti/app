@@ -35,6 +35,15 @@ var dniBehind = document.getElementById("dniBehind");
 var btDniBehind = document.getElementById("btDniBehind");
 btDniBehind.onclick = changeColorDniBehind;
 
+// Variables Requirements:
+let dniAlumneAnvers = document.getElementById("dniAlumneAnvers").onclick = getPicture;
+let dniAlumneRevers = document.getElementById("dniAlumneRevers").onclick = getPicture;
+let sanitariaAlumne = document.getElementById("sanitariaAlumne").onclick = getPicture;
+let dniRepresentantAnvers = document.getElementById("dniRepresentantAnvers").onclick = getPicture;
+let dniRepresentantRevers = document.getElementById("dniRepresentantRevers").onclick = getPicture;
+let monoparental = document.getElementById("monoparental").onclick = getPicture;
+let familiaNumerosa = document.getElementById("familiaNombrosa").onclick = getPicture;
+
 // Variables UFs:
 let selectAll = document.getElementById("selectAllCheckboxes");
 let saveUfs = document.getElementById("saveUfs");
@@ -42,8 +51,16 @@ let listUf = [];
 let token = JSON.parse(localStorage.getItem("data"));
 let body = document.getElementById("body");
 
+// Funcion carga inicial:
 async function onDeviceReady() {
 	await processUfs();
+
+    await getRequirementProfiles();
+    disableAllButtons();
+    
+    $("#selectRequirementsProfile").on('change', function() {
+        prepareProfile($(this).val());
+    });
 
     // Control de seleccion de checkboxes.
     selectAll.onclick = function() {
@@ -63,7 +80,6 @@ async function onDeviceReady() {
             applyShakeEffect();
         }
     }
-
 }
 
 // Funciones Dashboard:
@@ -77,6 +93,123 @@ function changeColorDniInFront() {
 
 function changeColorDniBehind() {
     dniBehind.className = "material-icons circle red-text darken-3";
+}
+
+// Funciones Requirements:
+async function getRequirementProfiles() {
+    let query = "/api/db/requirmentsprofile/read";
+
+    $.ajax({
+        method: "GET",
+        url: "https://matriculat-ieti.herokuapp.com" + query,
+        dataType: "json",
+    }).done(function(options) {
+        addOption("Perfil est\u00E0ndard");
+        options.forEach(i => {
+            addOption(i.profile_name);
+        });
+        $('select').formSelect();
+    }).fail(function() {
+        M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
+    });
+}
+
+function savePhoto(foto) {
+    let query = "/api/db/student/upload?dni=" + token.dni + "&photo=" + foto;
+
+    $.ajax({
+        method: "GET",
+        url: "https://matriculat-ieti.herokuapp.com" + query,
+        dataType: "text",
+    }).done(function() {
+        M.toast({html: 'La image s\'ha guardat correctament.', displayLength: 2000, classes: 'rounded'});
+    }).fail(function() {
+        M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
+    });
+}
+
+function addOption(option) {
+    $("#selectRequirementsProfile").append('<option class="orange-text" value="' + option + '">' + option + '</option>');
+}
+
+function addSpanPhotoDone(button) {
+    
+}
+
+function getPicture() {
+    navigator.camera.getPicture(function(imageData) {
+        savePhoto(imageData);
+    }, function() {
+        M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
+    }, {quality: 75, destinationType: Camera.DestinationType.DATA_URL});
+}
+
+function prepareProfile(profile) {
+    switch (profile) {
+        case "Perfil est\u00E0ndard":
+            disableAllButtons();
+            enableMinimButtons();
+            break;
+        case "Monoparental":
+            disableAllButtons();
+            enableMinimButtons();
+            enableRepresentantButtons();
+            enableMonoparentalButton();
+            break;
+        case "Familia Nombrosa":
+            disableAllButtons();
+            enableMinimButtons();
+            enableRepresentantButtons();
+            enableFNButton();
+            break;
+        case "Majors de 28 anys":
+            disableAllButtons();
+            enableMinimButtons();
+            break;
+        case "Majors de 28 anys amb Monoparental":
+            disableAllButtons();
+            enableMinimButtons();
+            enableMonoparentalButton();
+            break;
+        case "Majors de 28 anys amb Familia Nombrosa":
+            disableAllButtons();
+            enableMinimButtons();
+            enableFNButton();
+            break;
+        default:
+            disableAllButtons();
+            break;
+    }
+}
+
+function disableAllButtons() {
+    $('a[name="requerimentMinimButton"]').addClass("disabled");
+    $('a[name="requerimentRepresentantButton"]').addClass("disabled");
+    $('a[name="requerimentMonoparentalButton"]').addClass("disabled");
+    $('a[name="requerimentFamiliaNombrosaButton"]').addClass("disabled");
+}
+
+function enableAllButtons() {
+    $('a[name="requerimentMinimButton"]').removeClass("disabled");
+    $('a[name="requerimentRepresentantButton"]').removeClass("disabled");
+    $('a[name="requerimentMonoparentalButton"]').removeClass("disabled");
+    $('a[name="requerimentFamiliaNombrosaButton"]').removeClass("disabled");
+}
+
+function enableMinimButtons() {
+    $('a[name="requerimentMinimButton"]').removeClass("disabled");
+}
+
+function enableRepresentantButtons() {
+    $('a[name="requerimentRepresentantButton"]').removeClass("disabled");
+}
+
+function enableMonoparentalButton() {
+    $('a[name="requerimentMonoparentalButton"]').removeClass("disabled");
+}
+
+function enableFNButton() {
+    $('a[name="requerimentFamiliaNombrosaButton"]').removeClass("disabled");
 }
 
 // Funciones UFs:
@@ -96,7 +229,6 @@ async function processUfs() {
 function saveUfsList() {
     let query = "/api/db/student/import/ufs?email=" + token.email + "&json=" + listUf;
 
-    console.log("https://matriculat-ieti.herokuapp.com" + query);
     $.ajax({
         method: "GET",
         url: "https://matriculat-ieti.herokuapp.com" + query,
@@ -139,7 +271,7 @@ function fillUfList(cicle) {
 }
 
 function addCollapsibleLi(id, content) {
-    $("#collapsibleContainer").append('<li><div class="collapsible-header"><i class="material-icons">more_horiz</i>' + content + '</div><div id="' + id + '" class="collapsible-body"></div></li>');
+    $("#collapsibleContainer").append('<li><div class="collapsible-header"><i class="material-icons">more_horiz</i>' + content + '</div><div id="' + id + '" class="collapsible-body custom-padding-top-bottom-1rem"></div></li>');
 }
 
 function addCheckbox(id, content) {
@@ -161,6 +293,7 @@ function unselectAllCheckbox() {
 function getSelectedCheckbox() {
     let checkedList = $('input[name="UF-chk"]:checked');
     let arrayUF = []
+    
     if (checkedList.length > 0) {
         arrayUF = [];
         for (let i = 0; i < checkedList.length; i++) {
@@ -173,6 +306,7 @@ function getSelectedCheckbox() {
     return [];
 }
 
+// Funciones generales:
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

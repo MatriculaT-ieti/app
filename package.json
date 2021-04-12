@@ -20,7 +20,10 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      }
     },
     "platforms": [
       "browser",
@@ -28,6 +31,7 @@
     ]
   },
   "dependencies": {
+    "cordova-plugin-camera": "^5.0.1",
     "jwt-decode": "^3.1.2"
   }
 }
