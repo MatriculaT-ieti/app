@@ -140,8 +140,8 @@ function getPicture() {
     navigator.camera.getPicture(function(imageData) {
         savePhoto(imageData);
     }, function() {
-        M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
-    }, {quality: 75, destinationType: Camera.DestinationType.DATA_URL});
+        M.toast({html: "No s'ha pogut connectar amb la base de dades, <br/> la connexi\u00F3 ha fallat o la imatge no es v\u00E0lida", displayLength: 2000, classes: 'rounded'});
+    }, {quality: 25, destinationType: Camera.DestinationType.DATA_URL, allowEdit: false});
 }
 
 function prepareProfile(profile) {
@@ -149,6 +149,7 @@ function prepareProfile(profile) {
         case "Perfil est\u00E0ndard":
             disableAllButtons();
             enableMinimButtons();
+            enableRepresentantButtons();
             break;
         case "Monoparental":
             disableAllButtons();
