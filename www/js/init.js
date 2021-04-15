@@ -23,3 +23,12 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     //pass
 }
+
+function closeApp() {
+    try {
+        navigator.app.exitApp();
+    } catch (TypeError) {
+        // Do nothing
+    }
+    
+}

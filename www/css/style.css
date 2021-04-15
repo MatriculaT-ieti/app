@@ -12,12 +12,19 @@ body {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+
+    outline:none !important;
 }
 
 .filled-in {
     outline: none;
     box-shadow: none;
 }
+
+/*
+.filled-in:focus, .filled-in:active, .filled-in:hover {
+    
+}*/
 
 .custom-max-height-55 {
     height: 55vh;
@@ -103,6 +110,12 @@ a.active a:focus {
     background-color: rgba(255, 191, 131, 0.2);
     color: orangered;
     font-weight: bold;
+}
+
+blockquote {
+    margin: 20px 0;
+    padding-left: 1.5rem;
+    border-left: 5px solid orange !important;
 }
 
 .input-custom-border:focus {

@@ -22,18 +22,15 @@
 
 document.addEventListener('deviceready', onDeviceReady, false);
 
+// Variables generales:
+let body = document.getElementById("body");
+let floatingBtn = document.getElementById("confirm-floating-btn");
+let generalStatus = [false, false, false];
+
 // Variables Dashboard:
-var trafficLightMatricualtion = document.getElementById("trafficLightMatriculation");
-var btMatriculation = document.getElementById("btMatriculation");
-btMatriculation.onclick = changeColorMatriculation;
-
-var dniInFront = document.getElementById("dniInFront");
-var btMInFront = document.getElementById("btDniInFront");
-btMInFront.onclick = changeColorDniInFront;
-
-var dniBehind = document.getElementById("dniBehind");
-var btDniBehind = document.getElementById("btDniBehind");
-btDniBehind.onclick = changeColorDniBehind;
+let statusR = $("#statusR");   // Status Requeriments
+let statusU = $("#statusU");   // Status UFs
+let statusD = $("#statusD");   // Status Dades Personals
 
 // Variables Requirements:
 let dniAlumneAnvers = document.getElementById("dniAlumneAnvers").onclick = getPicture;
@@ -49,7 +46,9 @@ let selectAll = document.getElementById("selectAllCheckboxes");
 let saveUfs = document.getElementById("saveUfs");
 let listUf = [];
 let token = JSON.parse(localStorage.getItem("data"));
-let body = document.getElementById("body");
+
+// Variables Dades personals:
+
 
 // Funcion carga inicial:
 async function onDeviceReady() {
@@ -61,6 +60,8 @@ async function onDeviceReady() {
     $("#selectRequirementsProfile").on('change', function() {
         prepareProfile($(this).val());
     });
+
+    setStatus(statusD, 2, 2);
 
     // Control de seleccion de checkboxes.
     selectAll.onclick = function() {
@@ -83,16 +84,30 @@ async function onDeviceReady() {
 }
 
 // Funciones Dashboard:
-function changeColorMatriculation() {
-    trafficLightMatricualtion.className = "material-icons circle green-text darken-3";
-}
+function setStatus(type, status, bool) {
+    if (status == 0) {
+        type.removeClass("orange-text");
+        type.removeClass("green-text");
+        type.addClass("red-text");
+        
+        generalStatus[bool] = false;
+    } else if (status == 1) {
+        type.removeClass("green-text");
+        type.removeClass("red-text");
+        type.addClass("orange-text");
+        generalStatus[bool] = false;
+    } else if (status == 2) {
+        type.removeClass("orange-text");
+        type.removeClass("red-text");
+        type.addClass("green-text");
+        generalStatus[bool] = true;
+    }
 
-function changeColorDniInFront() {
-    dniInFront.className = "material-icons circle orange-text darken-3";
-}
-
-function changeColorDniBehind() {
-    dniBehind.className = "material-icons circle red-text darken-3";
+    if (generalStatus[0] && generalStatus[1] &&generalStatus[2]) {
+        applyPulseEffect();
+    } else {
+        removePulseEffect();
+    }
 }
 
 // Funciones Requirements:
@@ -115,15 +130,17 @@ async function getRequirementProfiles() {
 }
 
 function savePhoto(foto) {
-    let query = "/api/db/student/upload?dni=" + token.dni + "&photo=" + foto;
+    let query = "/api/db/student/upload?dni=" + token.dni;
 
     $.ajax({
-        method: "GET",
+        method: "POST",
         url: "https://matriculat-ieti.herokuapp.com" + query,
         dataType: "text",
+        data: foto
     }).done(function() {
         M.toast({html: 'La image s\'ha guardat correctament.', displayLength: 2000, classes: 'rounded'});
-    }).fail(function() {
+        setStatus(statusR, 1, 0);
+    }).fail(function(err) {
         M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
     });
 }
@@ -141,7 +158,7 @@ function getPicture() {
         savePhoto(imageData);
     }, function() {
         M.toast({html: "No s'ha pogut connectar amb la base de dades, <br/> la connexi\u00F3 ha fallat o la imatge no es v\u00E0lida", displayLength: 2000, classes: 'rounded'});
-    }, {quality: 25, destinationType: Camera.DestinationType.DATA_URL, allowEdit: false});
+    }, {destinationType: Camera.DestinationType.DATA_URL, allowEdit: false, sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM});
 }
 
 function prepareProfile(profile) {
@@ -236,6 +253,7 @@ function saveUfsList() {
         dataType: "text",
     }).done(function() {
         M.toast({html: 'UFs guardades satisfact\u00F2riament', displayLength: 2000, classes: 'rounded'});
+        setStatus(statusU, 2, 1);
     }).fail(function() {
         M.toast({html: "No s'ha pogut connectar amb la base de dades o la connexi\u00F3 ha fallat.", displayLength: 2000, classes: 'rounded'});
     });
@@ -316,4 +334,18 @@ async function applyShakeEffect() {
     body.classList = [];
     await sleep(10);
     body.classList = ["shake-animation"];
+}
+
+function applyPulseEffect() {
+    $("#confirm-floating-btn").addClass("pulse");
+
+    $("#confirm-floating-btn").removeClass("orange");
+    $("#confirm-floating-btn").addClass("green");
+}
+
+function removePulseEffect() {
+    $("#confirm-floating-btn").removeClass("pulse");
+
+    $("#confirm-floating-btn").removeClass("green");
+    $("#confirm-floating-btn").addClass("orange");
 }

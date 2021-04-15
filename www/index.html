@@ -7,7 +7,7 @@
 	<title>MatriculaT</title>
 
 	<meta http-equiv="Content-Security-Policy"
-		content="default-src https://matriculat-ieti.herokuapp.com https://code.jquery.com https://fonts.gstatic.com http://localhost:3000 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		content="default-src https://matriculat-ieti.herokuapp.com https://code.jquery.com https://fonts.gstatic.com http://localhost:3000 'unsafe-inline' 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 
@@ -18,67 +18,59 @@
 </head>
 
 <body id="body">
-	<div class="navbar-fixed">
-		<nav class="grey darken-4">
-			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
-				<ul class="right hide-on-med-and-down">
-					<li><a>Opcions (WIP)</a></li>
-				</ul>
-	
-				<ul id="nav-mobile" class="sidenav">
-					<li><a>Opcions (WIP)</a></li>
-					<li><a>Sortir (WIP)</a></li>
-				</ul>
-				<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			</div>
-			<div class="no-pad-bot grey darken-3" id="index-banner">
-				<ul id="tabs-swipe" class="tabs tabs-fixed-width center grey darken-3" align-items="center">
-					<!-- <i class="tiny material-icons circle red">error</i> -->
-					<!-- <i class="tiny material-icons circle green">check_circle</i> -->
-					<li class="tab col s3"><a href="#tab1" class="orange-text custom-font-size custom-border-radius">Dashboard</a></li>
-					<li class="tab col s3"><a href="#tab2" class="orange-text custom-font-size custom-border-radius">Requeriments</a></li>
-					<li class="tab col s3"><a href="#tab3" class="orange-text custom-font-size custom-border-radius">UF's</a></li>
-					<li class="tab col s3"><a href="#tab4" class="orange-text custom-font-size custom-border-radius">Dades Personals</a></li>
-				</ul>
-			</div>
-		</nav>
+	<nav class="grey darken-4" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">MatriculaT</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a>Opcions (WIP)</a></li>
+			</ul>
+
+			<ul id="nav-mobile" class="sidenav">
+				<li><a>Opcions (WIP)</a></li>
+				<li><a onclick="closeApp()">Sortir</a></li>
+			</ul>
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<div class="no-pad-bot grey darken-3" id="index-banner">
+		<ul id="tabs-swipe" class="tabs tabs-fixed-width center grey darken-3" align-items="center">
+			<li class="tab col s3"><a href="#tab1" class="orange-text custom-font-size custom-border-radius">Dashboard</a></li>
+			<li class="tab col s3"><a href="#tab2" class="orange-text custom-font-size custom-border-radius">Requeriments</a></li>
+			<li class="tab col s3"><a href="#tab3" class="orange-text custom-font-size custom-border-radius">UF's</a></li>
+			<li class="tab col s3"><a href="#tab4" class="orange-text custom-font-size custom-border-radius">Dades Personals</a></li>
+		</ul>
 	</div>
 
 	<!-- CONTENT DASHBOARD-->
-	<div id="tab1" class="col s12 custom-padding-1em custom-margin-top">
-		<div class="col s6 custom-margin-auto">
-			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-				<i id="trafficLightMatriculation"
-					class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-				<div class="custom-inline-tag custom-padding-02em">
-					<b>ESTADO MATRICULACION</b>
-				</div>
-
-				<a id="btMatriculation" class="waves-effect waves-light btn">button</a>
+	<div id="tab1" class="col s12 custom-padding-1em">
+		<div class="container">
+			<h5>Estat de matriculaci&#243;:</h5>
+			<div class="col s6 custom-border custom-border-radius">
+				<table class="striped">
+					<tbody>
+						<tr>
+							<td class="custom-padding-1em">Requeriments</td>
+							<td class="center"><i id="statusR" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
+						</tr>
+						<tr>
+							<td class="custom-padding-1em">UFs a matricular</td>
+							<td class="center"><i id="statusU" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
+						</tr>
+						<tr>
+							<td class="custom-padding-1em">Dades personals</td>
+							<td class="center"><i id="statusD" class="material-icons circle red-text custom-icon-padding">brightness_1</i></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-
-			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-				<i id="dniInFront" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-				<div class="custom-inline-tag custom-padding-02em">
-					<b>DNI POR DELANTE</b>
-				</div>
-
-				<a id="btDniInFront" class="waves-effect waves-light btn">button</a>
-			</div>
-
-			<div id="MATRICULA" class="custom-inline-tag custom-padding-02em">
-				<i id="dniBehind" class="material-icons circle grey-text darken-3 custom-icon-padding">brightness_1</i>
-				<div class="custom-inline-tag custom-padding-02em">
-					<b>DNI POR DETRAS</b>
-				</div>
-
-				<a id="btDniBehind" class="waves-effect waves-light btn">button</a>
-			</div>
+			<blockquote>
+				Quan hagi completat tots els requisits i hagin estat validats correctament, es mostraran en verd els sem&#224;fors desbloquejant el bot&#243; inferior dreta. 
+				Pressioni aquest bot&#243; per confirmar i realitzar la matriculació.
+			</blockquote>
 		</div>
 	</div>
 
 	<!-- CONTENT REQUERIMENTS-->
-	<div id="tab2" class="col s12 custom-padding-1em custom-margin-top">
+	<div id="tab2" class="col s12 custom-padding-1em">
 		<div class="input-field col s12 center-align custom-padding-1em">
 			<select id="selectRequirementsProfile">
 				<option class="orange-text" value="" disabled selected>Selecciona el perfil de requeriments</option>
@@ -120,7 +112,7 @@
 	</div>
 
 	<!-- CONTENT UFS-->
-	<div id="tab3" class="col s12 custom-padding-02em custom-margin-top">
+	<div id="tab3" class="col s12 custom-padding-02em">
 		<div class="custom-padding-1em flex-column custom-margin-bottom-125px">
 			<p class="custom-padding-1em custom-negative-margin-5px">
 				<label>
@@ -136,7 +128,7 @@
 	</div>
 
 	<!-- CONTENT DADES PERSONALS-->
-	<div id="tab4" class="col s12 custom-padding-1em custom-margin-top">Dades Personals</div>
+	<div id="tab4" class="col s12 custom-padding-1em">Dades Personals</div>
 
 	<!-- Floating Button -->
 	<div class="fixed-action-btn">
@@ -147,10 +139,8 @@
 
 	<div class="tap-target orange custom-padding-1em" data-target="confirm-floating-btn">
 		<div class="tap-target-content">
-			<h5>Matriculaci&#243;n</h5>
-			<p>Cuando haya completado todos los campos y est&#233;n validados correctamente, pulse aqu&#237; para
-				completar la
-				matriculaci&#243;n.</p>
+			<h5>Matriculaci&#243;</h5>
+			<p>Quan tots els camps siguin validats, pressioni aquest bot&#243; per completar la matriculaci&#243;</p>
 		</div>
 	</div>
 

@@ -1,73 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>MatriculaT Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<title>MatriculaT Login</title>
 
-<!-- cordova-headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src https://code.jquery.com https://matriculat-ieti.herokuapp.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
+	<!-- cordova-headers -->
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src https://code.jquery.com https://matriculat-ieti.herokuapp.com https://fonts.gstatic.com 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<!-- CSS  -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
+
 <body id="body">
-  <nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Login</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a>Opcions (WIP)</a></li>
-      </ul>
+	<nav class="grey darken-4" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo center">Login</a>
+			<ul class="right hide-on-med-and-down">
+				<li><a>Opcions (WIP)</a></li>
+			</ul>
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a>Opcions (WIP)</a></li>
-        <li><a>Sortir (WIP)</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
-  <div class="row center custom-padding-1em">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate input-custom-border custom-padding-02em" placeholder=" ">
-          <label for="Email" class="label-custom-color">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate input-custom-border" placeholder=" ">
-          <label for="password" class="label-custom-color">Password</label>
-        </div>
-      </div>
-      <a id="loginButton" class="waves-effect waves-grey grey darken-3 orange-text btn-large custom-border-radius">Login</a>
-    </form>
-  </div>
+			<ul id="nav-mobile" class="sidenav">
+				<li><a>Opcions (WIP)</a></li>
+				<li><a onclick="closeApp()">Sortir</a></li>
+			</ul>
+			<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<div class="row center custom-padding-1em">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="email" type="email" class="validate input-custom-border custom-padding-02em"
+						placeholder=" ">
+					<label for="Email" class="label-custom-color">Email</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="password" type="password" class="validate input-custom-border" placeholder=" ">
+					<label for="password" class="label-custom-color">Password</label>
+				</div>
+			</div>
+			<a id="loginButton"
+				class="waves-effect waves-grey grey darken-3 orange-text btn-large custom-border-radius">Login</a>
+		</form>
+	</div>
 
-  <div class="center-align custom-margin-top-20vh">
-    <div id="loader" class="preloader-wrapper">
-      <div class="spinner-layer spinner-orange-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="center-align custom-margin-top-20vh">
+		<div id="loader" class="preloader-wrapper">
+			<div class="spinner-layer spinner-orange-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="gap-patch">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <!--  Scripts-->
-  <script src="cordova.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/login.js"></script>  
-  <script src="js/jwt-decode.js"></script>
-  <script src="js/crypto-js.js"></script>
-  <script src="js/init.js"></script>
-  </body>
+	<!--  Scripts-->
+	<script src="cordova.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/jwt-decode.js"></script>
+	<script src="js/crypto-js.js"></script>
+</body>
+
 </html>
